@@ -3,6 +3,7 @@ import { DefaultTheme, ThemeProvider } from "styled-components";
 import { useTheme } from "../hooks/useTheme";
 import GlobalStyle from "../components/styles/GlobalStyle";
 import Terminal from "../components/Terminal";
+import Head from "next/head";
 
 export const themeContext = createContext<
   ((switchTheme: DefaultTheme) => void) | null
@@ -51,6 +52,9 @@ function App() {
 
   return (
     <>
+    <Head>
+      <title>Terminal | Montek</title>
+    </Head>
       <h1 className="sr-only" aria-label="Terminal Portfolio">
         Montek Portfolio
       </h1>

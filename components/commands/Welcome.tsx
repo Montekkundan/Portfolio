@@ -4,6 +4,7 @@ import {
   Link,
   PreImg,
   PreName,
+  PreNamebottom,
   PreNameMobile,
   PreWrapper,
   Seperator,
@@ -24,6 +25,16 @@ const Welcome: React.FC = () => {
 ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
           `}
         </PreName>
+        <PreNamebottom >
+          {`
+██████╗  ██████╗  ██████╗██╗  ██╗███████╗
+██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝██╔════╝
+██████╔╝██║   ██║██║     █████╔╝ ███████╗
+██╔══██╗██║   ██║██║     ██╔═██╗ ╚════██║
+██║  ██║╚██████╔╝╚██████╗██║  ██╗███████║
+╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝
+          `}
+        </PreNamebottom>
         <PreWrapper className="flex">
           <PreNameMobile>
             {`
@@ -35,12 +46,26 @@ const Welcome: React.FC = () => {
 ██║ ╚═╝ ██║╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██╗
 ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
           `}
+          <div className="flex">
+          {`
+██████╗  ██████╗  ██████╗██╗  ██╗███████╗
+██╔══██╗██╔═══██╗██╔════╝██║ ██╔╝██╔════╝
+██████╔╝██║   ██║██║     █████╔╝ ███████╗
+██╔══██╗██║   ██║██║     ██╔═██╗ ╚════██║
+██║  ██║╚██████╔╝╚██████╗██║  ██╗███████║
+╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝
+          `}
+          </div>
           </PreNameMobile>
         </PreWrapper>
         <div>Welcome to my terminal. (Version 1.0.0)</div>
         <Seperator>----</Seperator>
         <div>
           Hello how are you?! Stay healthy and don't forget to drink water!
+        </div>
+        <Seperator>----</Seperator>
+        <div>
+          Sometimes I'll start a line of code and I don't even know where its going.
         </div>
         <Seperator>----</Seperator>
         <div>

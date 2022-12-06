@@ -37,22 +37,6 @@ const theme: Themes = {
       },
     },
   },
-  "blue-matrix": {
-    id: "T_003",
-    name: "blue-matrix",
-    colors: {
-      body: "#101116",
-      scrollHandle: "#424242",
-      scrollHandleHover: "#616161",
-      primary: "#00ff9c",
-      secondary: "#60fdff",
-      text: {
-        100: "#ffffff",
-        200: "#c7c7c7",
-        300: "#76ff9f",
-      },
-    },
-  },
   espresso: {
     id: "T_004",
     name: "espresso",

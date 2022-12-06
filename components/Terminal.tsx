@@ -40,7 +40,7 @@ export const commands: Command = [
   { cmd: "pwd", desc: "print current working directory", tab: 10 },
   { cmd: "socials", desc: "check out my social accounts", tab: 6 },
   { cmd: "themes", desc: "check available themes", tab: 7 },
-  { cmd: "hello", desc: "display hero section", tab: 8 },
+  { cmd: "hello", desc: "display welcome section", tab: 8 },
   { cmd: "whoami", desc: "about current user", tab: 7 },
 ];
 

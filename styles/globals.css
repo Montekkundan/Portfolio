@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @layer components {
-    
+    #__next { 
+        @apply w-full h-full overflow-hidden fixed top-0 left-0
+    }
     
 }
