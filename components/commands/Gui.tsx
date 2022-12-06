@@ -11,7 +11,7 @@ const Gui: React.FC = () => {
 
   /* ===== check current command makes redirect ===== */
   if (rerender && currentCommand[0] === "gui") {
-    router.push("http://localhost:3000/",)
+    router.push("/",)
   }
 
   return <span></span>;

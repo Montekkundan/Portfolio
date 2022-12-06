@@ -60,7 +60,7 @@ const socials = [
     id: 2,
     title: "Discord",
     url: "https://discord.com/users/702170848508903444",
-    tab: 3,
+    tab: 2,
   },
   {
     id: 3,
@@ -72,7 +72,7 @@ const socials = [
     id: 4,
     title: "Twitter",
     url: "https://twitter.com/montekkundan",
-    tab: 0,
+    tab: 2,
   },
 ];
 

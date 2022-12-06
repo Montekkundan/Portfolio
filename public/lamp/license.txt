@@ -1,0 +1,11 @@
+Model Information:
+* title:	Street Lamp
+* source:	https://sketchfab.com/3d-models/street-lamp-6881aa1e84b047d79860fa9297e05e22
+* author:	bez_glaza (https://sketchfab.com/bez_glaza)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Street Lamp" (https://sketchfab.com/3d-models/street-lamp-6881aa1e84b047d79860fa9297e05e22) by bez_glaza (https://sketchfab.com/bez_glaza) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
