@@ -12,18 +12,23 @@ function Experience() {
     console.log("hello")
     gsap.to( camera.position, {
       duration: 2,
-      x: 0.25,
-      y: 0.25,
-      z: 0.25, // maybe adding even more offset depending on your model
+      x: 0,
+      y: 1,
+      z: 0, // maybe adding even more offset depending on your model
     } );
   }
+  // Todo 
+  // remove right click drag from camera
+  // add blender model of apartment with rooms
+  // add lamp with gsap path to apartment rooms
+  // create magical background
   const changeUrl = () => {
     console.log("hello")
     router.push("/terminal")
   }
   return (
     <>
-    <OrbitControls minDistance={2} maxDistance={10} maxPolarAngle={(Math.PI/2.1)}  position={[4,4,3]}/>
+    <OrbitControls minDistance={0.5} maxDistance={10} maxPolarAngle={(Math.PI/2.1)}  position={[4,4,3]}/>
     <directionalLight castShadow position={ [ 1, 2, 3 ] } intensity={ 1.5 } />
         <ambientLight intensity={ 0.5 } />
 

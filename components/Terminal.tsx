@@ -27,8 +27,9 @@ type Command = {
 }[];
 
 export const commands: Command = [
+  { cmd: "hello", desc: "display welcome section", tab: 8 },
+  { cmd: "whoami", desc: "about current user", tab: 7 },
   { cmd: "about", desc: "about Montek", tab: 8 },
-  { cmd: "clear", desc: "clear the terminal", tab: 8 },
   { cmd: "echo", desc: "print out anything", tab: 9 },
   { cmd: "education", desc: "my education background", tab: 4 },
   { cmd: "email", desc: "send an email to me", tab: 8 },
@@ -40,8 +41,7 @@ export const commands: Command = [
   { cmd: "pwd", desc: "print current working directory", tab: 10 },
   { cmd: "socials", desc: "check out my social accounts", tab: 6 },
   { cmd: "themes", desc: "check available themes", tab: 7 },
-  { cmd: "hello", desc: "display welcome section", tab: 8 },
-  { cmd: "whoami", desc: "about current user", tab: 7 },
+  { cmd: "clear", desc: "clear the terminal", tab: 8 },
 ];
 
 type Term = {

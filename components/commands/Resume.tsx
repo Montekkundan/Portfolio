@@ -4,7 +4,7 @@ import { Wrapper } from "../styles/Output.styled";
 const Resume: React.FC = () => {
   return (
     <Wrapper data-testid="education">
-      <RIntro>This is my Resume!</RIntro>
+      <RIntro>Work in Progress!</RIntro>
     </Wrapper>
   );
 };

@@ -36,6 +36,7 @@ const Output: React.FC<Props> = ({ index, cmd }) => {
     <OutputContainer data-testid={index === 0 ? "latest-output" : null}>
       {
         {
+          hello: <Welcome />,
           about: <About />,
           clear: <Clear />,
           echo: <Echo />,
@@ -49,7 +50,6 @@ const Output: React.FC<Props> = ({ index, cmd }) => {
           pwd: <GeneralOutput>/home/montekkundan</GeneralOutput>,
           socials: <Socials />,
           themes: <Themes />,
-          hello: <Welcome />,
           whoami: <GeneralOutput> <UserName/> </GeneralOutput>,
         }[cmd]
       }
