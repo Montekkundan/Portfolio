@@ -4,4 +4,4 @@
 
 ## Special Thanks
 
-Thanks to @Bruno Simon for teaching me Threejs!
+Thanks to @Bruno Simon for teaching me Threejs

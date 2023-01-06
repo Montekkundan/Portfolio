@@ -49,7 +49,7 @@ export const checkRedirect = (
   command: string
 ): boolean =>
   rerender && // is submitted
-  currentCommand[0] === command && // current command starts with ('socials'|'projects')
+  currentCommand[0] === command && // current command starts with ('socials'|'projects' | 'resume')
   currentCommand[1] === "go" && // first arg is 'go'
   currentCommand.length > 1 && // current command has arg
   currentCommand.length < 4 && // if num of arg is valid (not `projects go 1 sth`)
@@ -120,14 +120,14 @@ export const argTab = (
     return hintsCmds;
   }
 
-  // 5) if input is 'projects' or 'socials'
-  else if (inputVal === "projects " || inputVal === "socials ") {
+  // 5) if input is 'projects' or 'socials or resume'
+  else if (inputVal === "projects " || inputVal === "socials " || inputVal === "resume ") {
     setInputVal(`${inputVal}go`);
     return [];
   }
 
-  // 6) if input is 'projects g' or 'socials g'
-  else if (inputVal === "projects g" || inputVal === "socials g") {
+  // 6) if input is 'projects g' or 'socials g' or 'resume g'
+  else if (inputVal === "projects g" || inputVal === "socials g" || inputVal === "resume g") {
     setInputVal(`${inputVal}o`);
     return [];
   }
@@ -150,4 +150,15 @@ export const argTab = (
     });
     return hintsCmds;
   }
+    // 8) if input is 'resume go '
+    else if (_.startsWith(inputVal, "resume go ")) {
+      [
+        "1. Default",
+        "2. Google",
+        "2. Netflix",
+      ].forEach(t => {
+        hintsCmds = [...hintsCmds, t];
+      });
+      return hintsCmds;
+    }
 };

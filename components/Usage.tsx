@@ -1,7 +1,7 @@
 import { UsageDiv } from "./styles/Output.styled";
 
 type Props = {
-  cmd: "themes" | "projects" | "socials";
+  cmd: "themes" | "projects" | "socials" | "resume";
   marginY?: boolean;
 };
 
@@ -9,6 +9,7 @@ const arg = {
   themes: { placeholder: "theme-name", example: "dark" },
   projects: { placeholder: "project-no", example: "1" },
   socials: { placeholder: "social-no", example: "1" },
+  resume: { placeholder: "resume-no", example: "1" },
 };
 
 const Usage: React.FC<Props> = ({ cmd, marginY = false }) => {

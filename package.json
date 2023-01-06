@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.13",
     "@react-three/drei": "^9.46.2",
     "@react-three/fiber": "^8.9.1",
     "gsap": "^3.11.3",
