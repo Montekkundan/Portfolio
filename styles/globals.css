@@ -4,7 +4,7 @@
 
 @layer components {
     #__next { 
-        @apply w-full h-full overflow-hidden fixed top-0 left-0
+        /* @apply w-full h-full overflow-hidden fixed top-0 left-0 */
     }
     .link {
         @apply hover:underline cursor-pointer;
@@ -12,4 +12,8 @@
     .btn {
         @apply bg-[#f8f9fa] p-3 rounded-md ring-gray-200 text-sm text-gray-800 hover:ring-1 focus:outline-none active:ring-gray-300 hover:shadow-md;
     }
+    .root_page {
+        @apply w-full h-full overflow-hidden fixed top-0 left-0
+    }
+
 }

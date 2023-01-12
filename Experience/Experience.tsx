@@ -22,9 +22,8 @@ function Experience() {
   // add blender model of apartment with rooms
   // add lamp with gsap path to apartment rooms
   // create magical background
-  const changeUrl = () => {
-    console.log("hello")
-    router.push("/terminal")
+  const changeUrl = (url:string) => {
+    router.push(`/${url}`)
   }
   return (
     <>
@@ -40,9 +39,14 @@ function Experience() {
         <primitive object={ model.scene } position-y={ -0.07 }  scale={ 10 } />
         <primitive object={ lamp.scene } position-y={ -0.7 } position-x={ 2 } scale={ 0.1 } onClick={eventHandler} />
         
-        <mesh receiveShadow position-y={ 0 }  position-x={ -2 }  scale={ 0.1 } onClick={changeUrl} >
+        <mesh receiveShadow position-y={ 0 }  position-x={ -2 }  scale={ 0.1 } onClick={() => changeUrl("terminal")} >
             <boxGeometry />
             <meshStandardMaterial color="blue" />
+        </mesh>
+
+        <mesh receiveShadow position-y={ 0 }  position-x={ -3 }  scale={ 0.1 } onClick={() => changeUrl("resume")} >
+            <boxGeometry />
+            <meshStandardMaterial color="purple" />
         </mesh>
   </>
   )

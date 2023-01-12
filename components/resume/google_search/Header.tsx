@@ -2,15 +2,16 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import { useRef } from "react";
 import GoogleAvatar from "../google/Avatar";
-
-const SearchHeader = () => {
+interface Props {
+  placeholder:string
+}
+const SearchHeader = ({placeholder} :Props) => {
     const router = useRouter();
     const searchInputRef = useRef<any>(null);
     const search = (e: any) => {
         e.preventDefault();
         const term = searchInputRef.current.value;
         if(!term) return;
-        console.log(term);
         if(term.toLowerCase() === 'montek')
         {
         router.push(`/resume/google_resume/search/montek_search`);
@@ -25,7 +26,7 @@ const SearchHeader = () => {
         <div className='flex w-full p-6 items-center'>
         <Image src="/images/google_logo.png"  alt="google logo" height={40} width={120} onClick={() => router.push("/resume/google_resume")} />
         <form className="flex flex-grow border border-gray-200 rounded-full shadow-lg max-w-3xl items-center px-6 py-3 ml-10 mr-5">
-        <input ref={searchInputRef} placeholder="montek says hi 👋" type="text" className="flex-grow w-full focus:outline-none" />
+        <input ref={searchInputRef} placeholder={placeholder} type="text" className="flex-grow w-full focus:outline-none" />
         <svg xmlns="http://www.w3.org/2000/svg" onClick={() => (searchInputRef.current.value = "")} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer text-gray-500 transition duration-500 tranform hover:scale-125">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>

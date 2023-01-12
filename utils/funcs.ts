@@ -121,13 +121,13 @@ export const argTab = (
   }
 
   // 5) if input is 'projects' or 'socials or resume'
-  else if (inputVal === "projects " || inputVal === "socials " || inputVal === "resume ") {
+  else if (inputVal === "projects " || inputVal === "socials ") {
     setInputVal(`${inputVal}go`);
     return [];
   }
 
-  // 6) if input is 'projects g' or 'socials g' or 'resume g'
-  else if (inputVal === "projects g" || inputVal === "socials g" || inputVal === "resume g") {
+  // 6) if input is 'projects g' or 'socials g'
+  else if (inputVal === "projects g" || inputVal === "socials g") {
     setInputVal(`${inputVal}o`);
     return [];
   }
@@ -150,15 +150,4 @@ export const argTab = (
     });
     return hintsCmds;
   }
-    // 8) if input is 'resume go '
-    else if (_.startsWith(inputVal, "resume go ")) {
-      [
-        "1. Default",
-        "2. Google",
-        "2. Netflix",
-      ].forEach(t => {
-        hintsCmds = [...hintsCmds, t];
-      });
-      return hintsCmds;
-    }
 };

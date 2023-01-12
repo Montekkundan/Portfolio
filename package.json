@@ -9,6 +9,7 @@
     "@heroicons/react": "^2.0.13",
     "@react-three/drei": "^9.46.2",
     "@react-three/fiber": "^8.9.1",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "gsap": "^3.11.3",
     "next": "latest",
     "react": "18.2.0",

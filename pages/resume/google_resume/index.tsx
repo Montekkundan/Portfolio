@@ -4,6 +4,9 @@ import GoogleBody from '../../../components/resume/google/Body';
 import GoogleFooter from '../../../components/resume/google/Footer';
 import GoogleHeader from '../../../components/resume/google/Header';
 const GoogleResume: NextPage = () => {
+
+  // let form = document.getElementById('__next')
+  // if(form) (form.classList.remove('page')); 
   return (
     <>
     <Head>
