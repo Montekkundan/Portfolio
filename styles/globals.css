@@ -17,3 +17,14 @@
     }
 
 }
+
+.htmlScreen iframe
+{
+    width: 1065px;
+    height: 668px;
+    border: none;
+    border-radius: 20px;
+    background: #000000;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}

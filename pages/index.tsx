@@ -15,9 +15,10 @@ const LoadingScreen = ({ progress }:any) => {
   );
 };
 
+
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
-
+const [controlsEnabled, setControlsEnabled] = useState(false);
   // Simulate loading time
   setTimeout(() => setIsLoading(false), 3000);
   
@@ -28,12 +29,13 @@ const Home = () => {
       <Head>
         <title>Montek</title>
       </Head>
+      <button onClick={() => setControlsEnabled(!controlsEnabled)} className='pointer absolute z-20'> {!controlsEnabled ? 'Enable' : 'Disable'}</button>
       <div className="root_page">
         {isLoading ? (
           <LoadingScreen progress={progress} />
         ) : (
           <Canvas>
-            <Experience />
+            <Experience enable={controlsEnabled} />
           </Canvas>
         )}
       </div>
