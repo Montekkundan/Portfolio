@@ -1,33 +1,31 @@
-import type { NextPage } from 'next'
-import { Canvas } from '@react-three/fiber'
-import Experience from '../Experience/Experience'
-import Head from 'next/head'
-import { Suspense } from 'react'
-import { Html, useProgress } from '@react-three/drei'
-const Home: NextPage = () => {
+import { useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import Experience from '../Experience/Experience';
+import Head from 'next/head';
+import LoadingScreen from '../Experience/LoadingScreen';
 
-      // const form = document.getElementById('__next')
-      // if(form) (form.classList.add('page')); 
-      function Loader() {
-        const { progress } = useProgress()
-        return <Html center>{progress} % loaded</Html>
-      }
+const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate loading time
+  setTimeout(() => setIsLoading(false), 3000);
+
   return (
     <>
-    <Head>
-      <title>
-        Montek
-      </title>
-    </Head>
-    <div className="root_page">
-    <Canvas >
-    <Suspense fallback={<Loader />}>
-      <Experience/>
-      </Suspense>
-    </Canvas>
-    </div>
+      <Head>
+        <title>Montek</title>
+      </Head>
+      <div className="root_page">
+        {isLoading ? (
+          <LoadingScreen />
+        ) : (
+          <Canvas>
+            <Experience />
+          </Canvas>
+        )}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
