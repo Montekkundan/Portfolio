@@ -1,16 +1,14 @@
-import { useLoader, useThree } from '@react-three/fiber';
+import {  useLoader, useThree } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from '@react-three/drei';
-import gsap from 'gsap';
-import Link from 'next/link';
 import router from 'next/router';
-import { ShaderMaterial } from 'three';
 import { useRef } from 'react';
 import { Mesh } from 'three/src/objects/Mesh';
 
 function Experience(): JSX.Element {
   const model = useLoader(GLTFLoader, '/model/room.glb');
   const { camera } = useThree();
+  camera.position.set(-4, 2.5, 5);
 
   const purpleBoxRef = useRef<Mesh>(null!);
   const blueBoxRef = useRef<Mesh>(null!);
@@ -49,7 +47,7 @@ function Experience(): JSX.Element {
         <meshStandardMaterial color="greenyellow" />
       </mesh>
 
-      <primitive object={model.scene} position-y={0.34} scale={2} />
+      <primitive object={model.scene} position-y={0.34} scale={2}  rotation={[0, Math.PI, 0]} />
 
       <mesh
         ref={blueBoxRef}
