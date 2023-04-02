@@ -8,7 +8,7 @@ import * as THREE from 'three';
 import OperatingSystem from '../components/OperatingSystem';
 
 
-function Experience(enable: boolean): JSX.Element {
+function Experience(enable: any): JSX.Element {
   console.log(enable);
   const model = useLoader(GLTFLoader, '/model/room.glb');
   const { camera } = useThree();
