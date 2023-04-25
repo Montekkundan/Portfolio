@@ -1,6 +1,6 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import wordList from '../utils/wordlist';
 import React from 'react';
 import { Object3D } from 'three';
@@ -10,7 +10,7 @@ type SphereOfWordsProps = {
 };
 
 const SphereOfWords: React.FC<SphereOfWordsProps> = ({ expanded }) => {
-  const ref = React.useRef();
+  const ref = useRef<THREE.Group | null>(null);
 
   useFrame(() => {
     if (ref.current) {
