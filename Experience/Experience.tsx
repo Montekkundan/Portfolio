@@ -5,7 +5,6 @@ import router from 'next/router';
 import { useRef } from 'react';
 import { Mesh } from 'three/src/objects/Mesh';
 import * as THREE from 'three';
-import OperatingSystem from '../components/OperatingSystem';
 import gsap from 'gsap';
 
 
@@ -13,40 +12,7 @@ function Experience(enable: any): JSX.Element {
   
   const model = useLoader(GLTFLoader, '/model/room.glb');
   const { camera } = useThree();
-  let time = 0;
-  const duration = 5; // duration of the animation in seconds
-  const start = new THREE.Vector3(0, 2.2828, 3.4258);
-  const end = new THREE.Vector3(-3.5359259, 2.2828, 3.4258);
 
-
-function easeInOutCubic(t: number) {
-  return t < 0.5
-    ? 4 * t * t * t
-    : 1 - Math.pow(-2 * t + 2, 3) / 2;
-}
-
-useFrame(({ clock }) => {
-  const elapsed = clock.elapsedTime;
-  time += elapsed;
-  if (time < duration) {
-    const t = easeInOutCubic(time / duration);
-    const newPosition = new THREE.Vector3().lerpVectors(start, end, t);
-    camera.position.set(newPosition.x, newPosition.y, newPosition.z);
-  }
-  // setInterval(() => {
-  //   console.log('Camera position:', camera.position);
-  // }, 1000);
-  if (!enable.enable) {
-    // Use a sine wave function to move the camera left and right slowly
-    // Adjust the amplitude and frequency as needed
-    const amplitude = 1; // The maximum distance from the center
-    const frequency = 0.5; // The number of cycles per second
-    const x = camera.position.x; // The x coordinate changes over time
-    const y = camera.position.y; // The y coordinate stays the same
-    const z = amplitude * Math.sin(frequency * elapsed); // The z coordinate stays the same
-    camera.position.set(x, y, z); // Set the new camera position
-  }
-});
 
   camera.lookAt(0, 0.7, 14); // Make camera point at point of interest
   const purpleBoxRef = useRef<Mesh>(null!);
@@ -71,7 +37,7 @@ useFrame(({ clock }) => {
     <>
       
       <OrbitControls
-      enableRotate={enable.enable}
+      
         minDistance={2}
         maxDistance={6}
         maxPolarAngle={Math.PI / 2.1}
@@ -134,17 +100,6 @@ useFrame(({ clock }) => {
           object={ model.scene } 
       >
     
-      <Html transform
-    wrapperClass="htmlScreen"
-    distanceFactor={ 0.22 }
-    rotation={[0, Math.PI, 0]}
-    position={ [ 0.295, 0.87, 0.12] }
-    rotation-x={  0 }
-    >
-      <iframe id='webpage' src="https://www.montek.dev/terminal/" />
-          
-          {/* <OperatingSystem/> */}
-      </Html>
       </primitive>
     </>
   );
