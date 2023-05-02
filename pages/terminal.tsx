@@ -4,6 +4,7 @@ import { useTheme } from "../hooks/useTheme";
 import GlobalStyle from "../components/styles/GlobalStyle";
 import Terminal from "../components/Terminal";
 import Head from "next/head";
+import { motion } from 'framer-motion'
 
 export const themeContext = createContext<
   ((switchTheme: DefaultTheme) => void) | null
@@ -51,7 +52,12 @@ function App() {
   };
 
   return (
-    <>
+    <motion.div
+    key="home"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
     <Head>
       <title>Terminal | Montek</title>
     </Head>
@@ -66,7 +72,7 @@ function App() {
           </themeContext.Provider>
         </ThemeProvider>
       )}
-    </>
+    </motion.div>
   );
 }
 

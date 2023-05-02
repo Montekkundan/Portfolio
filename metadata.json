@@ -1,0 +1,24 @@
+{
+    "home": {
+      "title": "Montek | Homepage",
+      "description": "This is the home page.",
+      "keywords": "home, page, keywords",
+      "author": "Montek Singh Kundan",
+      "image": "/images/me.JPG"
+    },
+    "terminal": {
+      "title": "Montek | Terminal",
+      "description": "This is the home page.",
+      "keywords": "home, page, keywords",
+      "author": "Montek Singh Kundan",
+      "image": "/images/me.JPG"
+    },
+    "showcase": {
+      "title": "Montek | Showcase",
+      "description": "This is the home page.",
+      "keywords": "home, page, keywords",
+      "author": "Montek Singh Kundan",
+      "image": "/images/me.JPG"
+    }
+  }
+  
