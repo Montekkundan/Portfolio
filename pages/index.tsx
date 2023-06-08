@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import Experience from '../Experience/Experience';
 import Head from 'next/head';
@@ -6,6 +6,7 @@ import { useProgress } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import ReactLoading from 'react-loading';
 import metadata from '../metadata.json';
+import gsap from 'gsap';
 
 const LoadingScreen = ({ progress }:any) => {
   return (
@@ -21,6 +22,14 @@ const LoadingScreen = ({ progress }:any) => {
 const pageMetadata = metadata['home'];
 
 const Home = () => {
+  useEffect(() => {
+    const tl = gsap.timeline({ delay: 1 });
+    tl.to('.animate-up', { y: '-=50', opacity: 0, ease: 'Circ.easeInOut', duration: 1 })
+    .to('.loader', { height: 0, ease: 'Circ.easeInOut', duration: 1 }, )
+    .to('.green', { height: '100%', top: 0, ease: 'Circ.easeInOut', duration: 1, delay: -.8 })
+    .to('.green', { height: '0%',  ease: 'Circ.easeInOut', duration: 1, delay:-.3 });
+
+  }, []);
   const [isLoading, setIsLoading] = useState(true);
 const [controlsEnabled, setControlsEnabled] = useState(false);
   // Simulate loading time
@@ -40,8 +49,9 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
       <meta name="description" content={pageMetadata.description} />
         <meta name="keywords" content={pageMetadata.keywords} />
         <meta name="author" content={pageMetadata.author} />
+        <link href="https://fonts.googleapis.com/css2?family=Mazius&display=swap" rel="stylesheet"></link>
       </Head>
-      <button onClick={() => setControlsEnabled(!controlsEnabled)} className='pointer absolute z-20'> {!controlsEnabled ? 'Enable' : 'Disable'}</button>
+      {/* <button onClick={() => setControlsEnabled(!controlsEnabled)} className='pointer absolute z-20'> {!controlsEnabled ? 'Enable' : 'Disable'}</button>
       <div className="root_page">
         {isLoading ? (
           <LoadingScreen progress={progress} />
@@ -50,6 +60,16 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
             <Experience enable={controlsEnabled} />
           </Canvas>
         )}
+      </div> */}
+      <div className='w-full'>
+        <div className='loader w-full h-screen bg-[#111] text-white'>
+          <div className='absolute top-[5%] left-1/2 -translate-x-2/4 translate-y-0 '>
+            <h5 className='uppercase text-xs font-light text-center animate-up'>Design Portfolio</h5>
+            <h5 className='uppercase text-xs font-light text-center animate-up'>&copy; {new Date().getFullYear()}</h5>
+          </div>
+          <h1 className='animate-left animate-up absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-[4vw]  font-medium'>Monte<span  className='font-slack '>k</span> is a</h1>
+        </div>
+        <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
       </div>
       </motion.div>
   );
