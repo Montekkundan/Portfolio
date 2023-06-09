@@ -63,7 +63,7 @@ useEffect(() => {
       <meta name="description" content={pageMetadata.description} />
         <meta name="keywords" content={pageMetadata.keywords} />
         <meta name="author" content={pageMetadata.author} />
-        <link href="https://fonts.googleapis.com/css2?family=Mazius&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"></link>
       </Head>
       {/* <button onClick={() => setControlsEnabled(!controlsEnabled)} className='pointer absolute z-20'> {!controlsEnabled ? 'Enable' : 'Disable'}</button>
       <div className="root_page">
