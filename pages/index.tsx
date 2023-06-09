@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import ReactLoading from 'react-loading';
 import metadata from '../metadata.json';
 import gsap from 'gsap';
+import Typical from 'react-typical';
+
 
 const LoadingScreen = ({ progress }:any) => {
   return (
@@ -34,7 +36,13 @@ const Home = () => {
 const [controlsEnabled, setControlsEnabled] = useState(false);
   // Simulate loading time
   setTimeout(() => setIsLoading(false), 3000);
-  
+  const [showText, setShowText] = useState(false);
+
+useEffect(() => {
+  setTimeout(() => {
+    setShowText(true);
+  }, 2000);
+}, []);
   const { progress } = useProgress();
   // console.log(progress);
   return (
@@ -62,7 +70,7 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
         )}
       </div> */}
       <div className='w-full'>
-        <div className='loader w-full h-screen bg-[#111] text-white'>
+        <div className='loader  w-full h-screen bg-[#111] text-white '>
           <div className='absolute top-[5%] left-1/2 -translate-x-2/4 translate-y-0 '>
             <h5 className='uppercase text-xs font-light text-center animate-up'>Design Portfolio</h5>
             <h5 className='uppercase text-xs font-light text-center animate-up'>&copy; {new Date().getFullYear()}</h5>
@@ -70,6 +78,42 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
           <h1 className='animate-left animate-up absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-[4vw]  font-medium'>Monte<span  className='font-slack '>k</span> is a</h1>
         </div>
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
+        <div className='w-full h-[200vh] bg-[#f0f0f0] '>
+          <div className='w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
+            <a href="#" className='uppercase font-light text-xs text-black relative under'>Montek 
+              <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
+            </a>
+            <a href="#" className='uppercase font-light text-xs text-black relative under'>link
+            <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
+            </a>
+            <a href="#" className='uppercase font-light text-xs text-black relative under'>link
+            <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
+            </a>
+            <a href="#" className='uppercase font-light text-xs text-black relative under'>link
+            <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
+            </a>
+          </div>
+          <div className='w-full flex justify-between text-[#333] py-0 px-[6vw] pr-[12vw]'>
+          <h1 className='text-[13vw] font-semibold '>Creative</h1>
+          <div className='mt-[5vw]  '>
+            <h5 className='opacity-60 font-medium text-xs'>Currently available for </h5>
+            <h5 className='opacity-60 font-medium text-xs'>freelance</h5>
+          </div>
+          <div className='mt-[5vw]'>
+            <h5 className='opacity-60 font-medium text-xs'>My local time is</h5>
+            <h5 className='opacity-60 font-medium text-xs'>freelance</h5>
+          </div>
+        </div>
+        <div className='w-full flex justify-between text-[#333] py-0 px-[6vw] pr-[12vw] space-x-10  '>
+          {/* downarrow  */}  
+          <h1 className='text-[13vw] font-semibold font-slack tracking-tighter'>Visual </h1>
+          <h1 className='text-[13vw] font-semibold '> <Typical
+  steps={['Coder', 1000, 'Dev', 1000]}
+  loop={Infinity}
+/></h1>
+        </div>
+        </div>
+
       </div>
       </motion.div>
   );
