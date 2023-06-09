@@ -17,10 +17,9 @@
     }
 
 }
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pacifico&display=swap');
 .font-slack {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Kaushan Script', cursive;
     font-weight: 900;
     font-style: italic;
     color: #14CF93;

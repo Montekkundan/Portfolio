@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import ReactLoading from 'react-loading';
 import metadata from '../metadata.json';
 import gsap from 'gsap';
-
+import { Typewriter } from 'react-simple-typewriter'
 
 const LoadingScreen = ({ progress }:any) => {
   return (
@@ -29,7 +29,14 @@ const Home = () => {
     .to('.loader', { height: 0, ease: 'Circ.easeInOut', duration: 1 }, )
     .to('.green', { height: '100%', top: 0, ease: 'Circ.easeInOut', duration: 1, delay: -.8 })
     .to('.green', { height: '0%',  ease: 'Circ.easeInOut', duration: 1, delay:-.3 });
-
+  // Disable mouse scroll for the first 1.5 seconds
+  const disableScroll = (event: WheelEvent) => {
+    event.preventDefault();
+  };
+  window.addEventListener('wheel', disableScroll, { passive: false });
+  setTimeout(() => {
+    window.removeEventListener('wheel', disableScroll);
+  }, 4000);
   }, []);
   const [isLoading, setIsLoading] = useState(true);
 const [controlsEnabled, setControlsEnabled] = useState(false);
@@ -104,9 +111,12 @@ useEffect(() => {
           </div>
         </div>
         <div className='w-full flex justify-between text-[#333] py-0 px-[6vw] pr-[12vw]  '>
-          {/* downarrow  */}  
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+</svg>
+
           <h1 className='text-[13vw] font-semibold font-slack tracking-tighter'>Visual </h1>
-          <h1 className='text-[13vw] font-semibold '> Dev</h1>
+          <h1 className='text-[13vw] font-semibold '> <Typewriter words={['Dev', 'Coder']} cursor loop={false} /></h1>
         </div>
         </div>
 
