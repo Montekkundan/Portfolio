@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import ReactLoading from 'react-loading';
 import metadata from '../metadata.json';
 import gsap from 'gsap';
-import Typical from 'react-typical';
 
 
 const LoadingScreen = ({ progress }:any) => {
@@ -104,13 +103,10 @@ useEffect(() => {
             <h5 className='opacity-60 font-medium text-xs'>freelance</h5>
           </div>
         </div>
-        <div className='w-full flex justify-between text-[#333] py-0 px-[6vw] pr-[12vw] space-x-10  '>
+        <div className='w-full flex justify-between text-[#333] py-0 px-[6vw] pr-[12vw]  '>
           {/* downarrow  */}  
           <h1 className='text-[13vw] font-semibold font-slack tracking-tighter'>Visual </h1>
-          <h1 className='text-[13vw] font-semibold '> <Typical
-  steps={['Coder', 1000, 'Dev', 1000]}
-  loop={Infinity}
-/></h1>
+          <h1 className='text-[13vw] font-semibold '> Dev</h1>
         </div>
         </div>
 
