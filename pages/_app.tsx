@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <>
-    <Navbar />
+    {/* <Navbar /> */}
     <AnimatePresence mode='wait'>
       <Component {...pageProps} />
     </AnimatePresence>

@@ -18,11 +18,19 @@
 
 }
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 .font-slack {
     font-family: 'Kaushan Script', cursive;
     font-weight: 900;
     font-style: italic;
     color: #14CF93;
+}
+.font-abril {
+    font-family: 'Abril Fatface', cursive;
+}
+.font-mono {
+    font-family: 'Space Mono', monospace;
 }
 
 .htmlScreen iframe
@@ -42,3 +50,7 @@
 .line {
     transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
 }
+
+.creative, .navbar, .typewriter, .visual, .icons {
+    opacity: 0;
+  }
