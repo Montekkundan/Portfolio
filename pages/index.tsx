@@ -25,6 +25,7 @@ const pageMetadata = metadata['home'];
 
 const Home = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     const tl = gsap.timeline({ delay: 1 });
     tl.to('.animate-up', { y: '-=50', opacity: 0, ease: 'Circ.easeInOut', duration: 1 })
     .to('.loader', { height: 0, ease: 'Circ.easeInOut', duration: 1 }, )
@@ -91,9 +92,9 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
           <h1 className='animate-left animate-up absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-3xl md:text-[4vw] font-medium'>Monte<span  className='font-slack '>k</span> is a</h1>
         </div>
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
-        <div className='w-full h-[200vh] bg-[#f0f0f0] '>
+        <div className='w-full h-screen bg-[#f0f0f0] '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
-            <Link href="#" className='uppercase font-light text-xs text-black relative under'>Montek 
+            <Link href="/" className='uppercase font-light text-xs text-black relative under'>Montek 
               <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
             </Link>
             <a target="_blank" href="https://blog.montek.dev/" className='uppercase font-light text-xs text-black relative under'>Devlog
@@ -143,8 +144,12 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
           </div>
       </div>
       
-      {/* hello */}
+      
         </div>
+        
+        </div>
+        <div className='w-full h-screen bg-red-100'>
+
         </div>
            
       </div>
