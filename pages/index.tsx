@@ -9,6 +9,7 @@ import metadata from '../metadata.json';
 import gsap from 'gsap';
 import { Typewriter } from 'react-simple-typewriter'
 import Link from 'next/link';
+import DragImage from '../components/draggerImage';
 
 const LoadingScreen = ({ progress }:any) => {
   return (
@@ -35,6 +36,7 @@ const Home = () => {
     .to('.navbar', { y: 0, opacity: 1, ease: 'Circ.easeInOut', duration: 1 }) 
     .to('.typewriter', { opacity: 1, ease: 'Circ.easeInOut', duration: 1 }) 
     .to('.visual', { opacity: 1, ease: 'Circ.easeInOut', duration: 1 }) 
+    .to('.drag-image', { scale: 1, opacity: 1, ease: 'Circ.easeInOut', duration: 1 }, '-=1')
     .to('.icons', { opacity: 1, stagger: .3, ease: 'Circ.easeInOut', duration: 1 }); 
   // Disable mouse scroll for the first 1.5 seconds
   const disableScroll = (event: WheelEvent) => {
@@ -131,7 +133,10 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
           <h1 className='text-7xl md:text-[13vw] font-semibold typewriter text-center font-mono'>  
         Dev
       </h1>
+      
+      
       </div>
+      
       <div className='flex justify-between  md:hidden mx-5'>
           <div className='mt-[5vw]  '>
             <h5 className='opacity-60 font-medium text-xs'>Currently available for </h5>
@@ -143,14 +148,15 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
           </div>
           </div>
       </div>
+      <div className='drag-image'><DragImage /></div>
       
       
         </div>
         
         </div>
         <div className='w-full h-screen bg-red-100'>
-
         </div>
+
            
       </div>
       </motion.div>
