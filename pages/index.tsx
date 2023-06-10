@@ -8,6 +8,7 @@ import ReactLoading from 'react-loading';
 import metadata from '../metadata.json';
 import gsap from 'gsap';
 import { Typewriter } from 'react-simple-typewriter'
+import Link from 'next/link';
 
 const LoadingScreen = ({ progress }:any) => {
   return (
@@ -69,9 +70,7 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
       <meta name="description" content={pageMetadata.description} />
         <meta name="keywords" content={pageMetadata.keywords} />
         <meta name="author" content={pageMetadata.author} />
-        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"></link>
-        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Kaushan+Script&display=swap" rel="stylesheet"></link>
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
+
       </Head>
       {/* <button onClick={() => setControlsEnabled(!controlsEnabled)} className='pointer absolute z-20'> {!controlsEnabled ? 'Enable' : 'Disable'}</button>
       <div className="root_page">
@@ -94,23 +93,23 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
         <div className='w-full h-[200vh] bg-[#f0f0f0] '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
-            <a href="#" className='uppercase font-light text-xs text-black relative under'>Montek 
+            <Link href="#" className='uppercase font-light text-xs text-black relative under'>Montek 
               <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
+            </Link>
+            <a target="_blank" href="https://blog.montek.dev/" className='uppercase font-light text-xs text-black relative under'>Devlog
+            <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
             </a>
-            <a href="#" className='uppercase font-light text-xs text-black relative under'>link
+            {/* <a href="#" className='uppercase font-light text-xs text-black relative under'>link
             <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
             </a>
             <a href="#" className='uppercase font-light text-xs text-black relative under'>link
             <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
-            </a>
-            <a href="#" className='uppercase font-light text-xs text-black relative under'>link
-            <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
-            </a>
+            </a> */}
           </div>
           <div className='mt-32  flex flex-col '>
           <div className='navbar w-full flex flex-col md:flex-row justify-between text-[#333] py-0 px-[6vw] pr-[12vw]'>
           <h1 className='text-7xl md:text-[13vw] font-semibold creative text-center font-abril'>Creative</h1>
-          <div className='hidden  md:flex md:space-x-20'>
+          <div className='hidden  md:flex md:space-x-20 md:ml-5'>
           <div className='mt-[5vw]  '>
             <h5 className='opacity-60 font-medium text-xs'>Currently available for </h5>
             <h5 className='opacity-60 font-medium text-xs'>freelance</h5>
@@ -126,14 +125,22 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
 </svg>
 
-          <div className='flex flex-col md:flex-row '>
-          <h1 className='text-7xl md:text-[13vw] text-center font-semibold font-slack tracking-tighter visual md:pr-20'><span>~</span>Visual </h1>
-          <h1 className='text-7xl md:text-[13vw] font-semibold typewriter text-center font-mono'>  {startTyping && (
-        // <Typewriter words={['Dev', 'Coder']} cursor loop={false} /> 
-        'Dev'
-      )}</h1>
+          <div className='flex flex-col md:flex-row  '>
+          <h1 className='text-7xl md:text-[13vw] text-center font-semibold font-slack tracking-tighter visual md:pr-32'><span>~</span>Visual </h1>
+          <h1 className='text-7xl md:text-[13vw] font-semibold typewriter text-center font-mono'>  
+        Dev
+      </h1>
       </div>
-      
+      <div className='flex justify-between  md:hidden mx-5'>
+          <div className='mt-[5vw]  '>
+            <h5 className='opacity-60 font-medium text-xs'>Currently available for </h5>
+            <h5 className='opacity-60 font-medium text-xs'>freelance</h5>
+          </div>
+          <div className='mt-[5vw]'>
+            <h5 className='opacity-60 font-medium text-xs'>My local time is</h5>
+            <h5 className='opacity-60 font-medium text-xs'>--</h5>
+          </div>
+          </div>
       </div>
       
       {/* hello */}
