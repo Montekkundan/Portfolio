@@ -34,6 +34,7 @@ const Home = () => {
     .to('.green', { height: '0%',  ease: 'Circ.easeInOut', duration: 1, delay:-.3 })
     .to('.creative', { y: 0, opacity: 1, ease: 'Circ.easeInOut', duration: 1 }, '-=1') 
     .to('.navbar', { y: 0, opacity: 1, ease: 'Circ.easeInOut', duration: 1 }) 
+    .to('.available', { y: 0, opacity: 1, ease: 'Circ.easeInOut', duration: 1 }, '-=1') 
     .to('.typewriter', { opacity: 1, ease: 'Circ.easeInOut', duration: 1 }) 
     .to('.visual', { opacity: 1, ease: 'Circ.easeInOut', duration: 1 }) 
     .to('.drag-image', { scale: 1, opacity: 1, ease: 'Circ.easeInOut', duration: 1 }, '-=1')
@@ -137,7 +138,7 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
       
       </div>
       
-      <div className='flex justify-between  md:hidden mx-5'>
+      <div className=' available flex justify-between  md:hidden mx-5'>
           <div className='mt-[5vw]  '>
             <h5 className='opacity-60 font-medium text-xs'>Currently available for </h5>
             <h5 className='opacity-60 font-medium text-xs'>freelance</h5>
