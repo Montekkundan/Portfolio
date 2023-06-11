@@ -27,13 +27,13 @@ const Home = () => {
         gsap.to('#section_2', { backgroundColor: '#333', delay: 0.5  });
         gsap.to('#section_1', { backgroundColor: '#333', color: 'white' , delay: 0.5  });
         gsap.to('#section_3', { backgroundColor: '#333', color: 'white' , delay: 0.5  });
-        gsap.to('#cursor', { backgroundColor: '#f0f0f0' , delay: 0.5   });
+        gsap.to('#cursor', { backgroundColor: '#333' , delay: 0.5   });
       },
       onLeaveBack: () => {
         gsap.to('#section_2', { backgroundColor: '#f0f0f0' , delay: 0.5  });
         gsap.to('#section_1', { backgroundColor: '#f0f0f0', color: '#333' , delay: 0.5  });
         gsap.to('#section_3', { backgroundColor: '#f0f0f0' , delay: 0.5  });
-        gsap.to('#cursor', { backgroundColor: '#333' , delay: 0.5 });
+        gsap.to('#cursor', { backgroundColor: '#f0f0f0' , delay: 0.5 });
 
       },
     });
