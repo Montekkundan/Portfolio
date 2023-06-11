@@ -6,10 +6,10 @@ import { useProgress } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import ReactLoading from 'react-loading';
 import metadata from '../metadata.json';
-import gsap from 'gsap';
-import { Typewriter } from 'react-simple-typewriter'
 import Link from 'next/link';
 import DragImage from '../components/draggerImage';
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const LoadingScreen = ({ progress }:any) => {
   return (
@@ -26,6 +26,7 @@ const pageMetadata = metadata['home'];
 
 const Home = () => {
   useEffect(() => {
+    
     window.scrollTo(0, 0);
     const tl = gsap.timeline({ delay: 1 });
     tl.to('.animate-up', { y: '-=50', opacity: 0, ease: 'Circ.easeInOut', duration: 1 })
@@ -53,7 +54,25 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
   // Simulate loading time
   setTimeout(() => setIsLoading(false), 3000);
   const [startTyping, setStartTyping] = useState(false);
+  gsap.registerPlugin(ScrollTrigger);
+
   useEffect(() => {
+  
+    ScrollTrigger.create({
+      trigger: '#section_2',
+      start: 'top center',
+      onEnter: () => {
+        gsap.to('#section_2', { backgroundColor: '#333', duration: 0.5 });
+        gsap.to('#section_1', { backgroundColor: '#333', duration: 0.5, color: 'white' });
+        gsap.to('#cursor', { backgroundColor: '#f0f0f0', duration: 0.5  });
+      },
+      onLeaveBack: () => {
+        gsap.to('#section_2', { backgroundColor: '#f0f0f0', duration: 0.5 });
+        gsap.to('#section_1', { backgroundColor: '#f0f0f0', duration: 0.5, color: '#333' });
+        gsap.to('#cursor', { backgroundColor: '#333', duration: 0.5 });
+
+      },
+    });
     const timer = setTimeout(() => {
       setStartTyping(true);
     }, 4000); // delay of 4 seconds
@@ -89,19 +108,19 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
       <div className='w-full'>
         <div className='loader  w-full h-screen bg-[#111] text-white '>
           <div className='absolute top-[5%] left-1/2 -translate-x-2/4 translate-y-0 '>
-            <h5 className='uppercase text-xs font-light text-center animate-up'>Design Portfolio</h5>
+            <h5 className='uppercase text-xs font-light text-center animate-up'>Personal Portfolio</h5>
             <h5 className='uppercase text-xs font-light text-center animate-up'>&copy; {new Date().getFullYear()}</h5>
           </div>
           <h1 className='animate-left animate-up absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-3xl md:text-[4vw] font-medium'>Monte<span  className='font-slack '>k</span> is a</h1>
         </div>
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
-        <div className='w-full h-screen bg-[#f0f0f0] '>
+        <div id='section_1' className='w-full h-screen bg-[#f0f0f0] text-[#333] '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
             <Link href="/" className='uppercase font-light text-xs text-black relative under'>Montek 
-              <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
+              <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
             </Link>
             <a target="_blank" href="https://blog.montek.dev/" className='uppercase font-light text-xs text-black relative under'>Devlog
-            <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
+            <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
             </a>
             {/* <a href="#" className='uppercase font-light text-xs text-black relative under'>link
             <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
@@ -111,7 +130,7 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
             </a> */}
           </div>
           <div className='mt-32  flex flex-col '>
-          <div className='navbar w-full flex flex-col md:flex-row justify-between text-[#333] py-0 px-[6vw] pr-[12vw]'>
+          <div className='navbar w-full flex flex-col md:flex-row justify-between  py-0 px-[6vw] pr-[12vw]'>
           <h1 className='text-7xl md:text-[13vw] font-semibold creative text-center font-abril'>Creative</h1>
           <div className='hidden  md:flex md:space-x-20 md:ml-5'>
           <div className='mt-[5vw]  '>
@@ -124,16 +143,17 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
           </div>
           </div>
         </div>
-        <div className='w-full md:flex justify-between text-[#333] py-0 px-[6vw] pr-[12vw] items-center  '>
+        <div className='w-full md:flex justify-between  py-0 px-[6vw] pr-[12vw] items-center  '>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="icons hidden md:inline w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
 </svg>
 
           <div className='flex flex-col md:flex-row  '>
           <h1 className='text-7xl md:text-[13vw] text-center font-semibold font-slack tracking-tighter visual md:pr-32'><span>~</span>Visual </h1>
-          <h1 className='text-7xl md:text-[13vw] font-semibold typewriter text-center font-mono'>  
-        Dev
-      </h1>
+          <h1 className='text-7xl md:text-[13vw] font-semibold typewriter text-center font-mono'>
+              <span>Dev</span>
+              <div id='cursor' className='w-1.5 h-14 md:w-2 md:h-20  xl:h-40 bg-[#333]   animate-[blink_1s_infinite] inline-block' />
+            </h1>
       
       
       </div>
@@ -155,7 +175,7 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
         </div>
         
         </div>
-        <div className='w-full h-screen bg-red-100'>
+        <div  id='section_2' className='section-1 w-full h-screen bg-[#f0f0f0]' >
         </div>
 
            

@@ -58,3 +58,10 @@
   .drag-image {
     scale: 0.8;
   }
+
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
