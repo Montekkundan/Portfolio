@@ -22,14 +22,32 @@ const Home = () => {
       start: 'top bottom',
       onEnter: () => {
         gsap.to('#section_2', { backgroundColor: '#333',  });
-        gsap.to('#section_1', { backgroundColor: '#333', duration: 0.5, color: 'white' });
-        gsap.to('#cursor', { backgroundColor: '#f0f0f0', duration: 0.5  });
+        gsap.to('#section_1', { backgroundColor: '#333', color: 'white' });
+        gsap.to('#cursor', { backgroundColor: '#f0f0f0'  });
+        gsap.to('body', { backgroundColor: '#333'  });
       },
       onLeaveBack: () => {
-        gsap.to('#section_2', { backgroundColor: '#f0f0f0', duration: 0.5 });
-        gsap.to('#section_1', { backgroundColor: '#f0f0f0', duration: 0.5, color: '#333' });
-        gsap.to('#cursor', { backgroundColor: '#333', duration: 0.5 });
+        gsap.to('body', { backgroundColor: '#f0f0f0'  });
+        gsap.to('#section_2', { backgroundColor: '#f0f0f0' });
+        gsap.to('#section_1', { backgroundColor: '#f0f0f0', color: '#333' });
+        gsap.to('#cursor', { backgroundColor: '#333' });
 
+      },
+    });
+    ScrollTrigger.create({
+      trigger: '#section_3',
+      start: 'top bottom',
+      onEnter: () => {
+        gsap.to('body', { backgroundColor: '#14CF93'  });
+        gsap.to('#section_3', { backgroundColor: '#14CF93' });
+        gsap.to('#section_2', { backgroundColor: '#14CF93' });
+        gsap.to('#section_1', { backgroundColor: '#14CF93' });
+      },
+      onLeaveBack: () => {
+        gsap.to('body', { backgroundColor: '#333'  });
+        gsap.to('#section_3', { backgroundColor: '#333' });
+        gsap.to('#section_2', { backgroundColor: '#333' });
+        gsap.to('#section_1', { backgroundColor: '#333' });
       },
     });
     const tl = gsap.timeline({ delay: 1 });
@@ -67,16 +85,7 @@ const Home = () => {
         <meta name="author" content={pageMetadata.author} />
 
       </Head>
-      {/* <button onClick={() => setControlsEnabled(!controlsEnabled)} className='pointer absolute z-20'> {!controlsEnabled ? 'Enable' : 'Disable'}</button>
-      <div className="root_page">
-        {isLoading ? (
-          <LoadingScreen progress={progress} />
-        ) : (
-          <Canvas>
-            <Experience enable={controlsEnabled} />
-          </Canvas>
-        )}
-      </div> */}
+ 
       <div className='w-full'>
         <div className='loader  w-full h-screen bg-[#111] text-white '>
           <div className='absolute top-[5%] left-1/2 -translate-x-2/4 translate-y-0 '>
@@ -147,11 +156,11 @@ const Home = () => {
         </div>
         
         </div>
-        <div  id='section_2' className='section-1 w-full h-screen bg-[#f0f0f0]' >
+        <div  id='section_2' className='bg-[#333] w-full h-screen ' >
         </div>
 
-        {/* <div  id='' className=' w-full h-screen bg-[#f0f0f0]' >
-        </div> */}
+        <div  id='section_3' className='bg-[#14CF93] w-full h-screen ' >
+        </div>
       </div>
       </motion.div>
   );
