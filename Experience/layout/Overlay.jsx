@@ -10,9 +10,9 @@
     const nextGeometry = useFlock((state) => state.nextGeometry);
   
     return (
-      <div className="absolute z-[100] text-[1.5em] text-[white]">
+      <div className="absolute z-[100]  text-[white]">
         <div className="pl-[1vw] top-[5vw]">
-          <h1 className="font-normal text-[min(14vw,10em)] leading-[0.85em] -tracking-widest z-[200] mt-0 mb-[0.05em] mx-0 p-0;">Hello</h1>
+          <h1 className="font-bold text-6xl  z-[200] ">Hello</h1>
           <p>hey there</p>
         </div>
         <div className="pl-[1vw] top-[5vw]">
@@ -33,7 +33,7 @@
           />
         </RightMiddle> */}
         <div className="w-[30ch] max-w-[40%] left-[5vw] bottom-[5vw]">
-          <h1>hello</h1>
+          <h1 className="text-6xl">hello</h1>
         </div>
         <div className="right-[5vw] bottom-[5vw]">
           <h1>hello</h1>
