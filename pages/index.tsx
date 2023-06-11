@@ -1,19 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import Experience from '../Experience/Experience';
+import { Suspense, useEffect, useState } from 'react';
 import Head from 'next/head';
-import { useProgress } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import ReactLoading from 'react-loading';
 import metadata from '../metadata.json';
 import Link from 'next/link';
 import DragImage from '../components/draggerImage';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Overlay from "../Experience/layout/Overlay.jsx";
+import useFlock from "../Experience/stores/useFlock.js";
+import WindowFocusHandler from "../Experience/layout/WindowFocusHandler.jsx";
+import Flock from "../Experience/Flock.jsx";
+
 
 const pageMetadata = metadata['home'];
 gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
+  const flockCount = useFlock((state: { count: any; }) => state.count);
   useEffect(() => {
     
     window.scrollTo(0, 0);
@@ -82,7 +84,7 @@ const Home = () => {
           <h1 className='animate-left animate-up absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-3xl md:text-[4vw] font-medium'>Monte<span  className='font-slack '>k</span> is a</h1>
         </div>
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
-        <div id='section_1' className='w-full h-screen bg-[#f0f0f0] text-[#333] '>
+        <div  className='w-full h-screen bg-[#f0f0f0] text-[#333] '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
             <Link href="/" className='uppercase font-light text-xs  relative under'>Montek 
               <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
@@ -143,10 +145,19 @@ const Home = () => {
         </div>
         
         </div>
+        <div  id='section_1' className='bg-[#f0f0f0] w-full h-screen ' >
+        </div>
         <div  id='section_2' className='bg-[#333] w-full h-screen ' >
         </div>
 
         <div  id='section_3' className='bg-[#333] w-full h-screen ' >
+        <Suspense fallback={null}>
+        <Overlay />
+        <Flock count={flockCount} />
+        
+      </Suspense>
+      
+      <WindowFocusHandler />
         </div>
       </div>
       </motion.div>
