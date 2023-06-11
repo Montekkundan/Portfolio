@@ -11,23 +11,27 @@ import DragImage from '../components/draggerImage';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const LoadingScreen = ({ progress }:any) => {
-  return (
-    <div style={{ position: 'fixed', backgroundColor: 'black', width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', transform: 'none' }}>
-      <div style={{ backgroundColor: 'black', border: '2px solid white', padding: '2rem', borderRadius: '0.5rem', fontFamily: 'monospace', color: 'white' }}>
-        <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Montek OS [Version 10.0.19043.1266]</p>
-        <p style={{ fontSize: '1.5rem' }}>Loading... {progress} %</p>
-        <ReactLoading type={"bars"} color={"#fff"} height={20} width={20} />
-      </div>
-    </div>
-  );
-};
 const pageMetadata = metadata['home'];
-
+gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   useEffect(() => {
     
     window.scrollTo(0, 0);
+    ScrollTrigger.create({
+      trigger: '#section_2',
+      start: 'top bottom',
+      onEnter: () => {
+        gsap.to('#section_2', { backgroundColor: '#333',  });
+        gsap.to('#section_1', { backgroundColor: '#333', duration: 0.5, color: 'white' });
+        gsap.to('#cursor', { backgroundColor: '#f0f0f0', duration: 0.5  });
+      },
+      onLeaveBack: () => {
+        gsap.to('#section_2', { backgroundColor: '#f0f0f0', duration: 0.5 });
+        gsap.to('#section_1', { backgroundColor: '#f0f0f0', duration: 0.5, color: '#333' });
+        gsap.to('#cursor', { backgroundColor: '#333', duration: 0.5 });
+
+      },
+    });
     const tl = gsap.timeline({ delay: 1 });
     tl.to('.animate-up', { y: '-=50', opacity: 0, ease: 'Circ.easeInOut', duration: 1 })
     .to('.loader', { height: 0, ease: 'Circ.easeInOut', duration: 1 }, )
@@ -49,38 +53,6 @@ const Home = () => {
     window.removeEventListener('wheel', disableScroll);
   }, 4000);
   }, []);
-  const [isLoading, setIsLoading] = useState(true);
-const [controlsEnabled, setControlsEnabled] = useState(false);
-  // Simulate loading time
-  setTimeout(() => setIsLoading(false), 3000);
-  const [startTyping, setStartTyping] = useState(false);
-  gsap.registerPlugin(ScrollTrigger);
-
-  useEffect(() => {
-  
-    ScrollTrigger.create({
-      trigger: '#section_2',
-      start: 'top center',
-      onEnter: () => {
-        gsap.to('#section_2', { backgroundColor: '#333', duration: 0.5 });
-        gsap.to('#section_1', { backgroundColor: '#333', duration: 0.5, color: 'white' });
-        gsap.to('#cursor', { backgroundColor: '#f0f0f0', duration: 0.5  });
-      },
-      onLeaveBack: () => {
-        gsap.to('#section_2', { backgroundColor: '#f0f0f0', duration: 0.5 });
-        gsap.to('#section_1', { backgroundColor: '#f0f0f0', duration: 0.5, color: '#333' });
-        gsap.to('#cursor', { backgroundColor: '#333', duration: 0.5 });
-
-      },
-    });
-    const timer = setTimeout(() => {
-      setStartTyping(true);
-    }, 4000); // delay of 4 seconds
-
-    return () => clearTimeout(timer); // cleanup on unmount
-  }, []);
-  const { progress } = useProgress();
-  // console.log(progress);
   return (
     <motion.div
     key="home"
@@ -116,10 +88,10 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
         <div id='section_1' className='w-full h-screen bg-[#f0f0f0] text-[#333] '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
-            <Link href="/" className='uppercase font-light text-xs text-black relative under'>Montek 
+            <Link href="/" className='uppercase font-light text-xs  relative under'>Montek 
               <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
             </Link>
-            <a target="_blank" href="https://blog.montek.dev/" className='uppercase font-light text-xs text-black relative under'>Devlog
+            <a target="_blank" href="https://blog.montek.dev/" className='uppercase font-light text-xs relative under'>Devlog
             <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
             </a>
             {/* <a href="#" className='uppercase font-light text-xs text-black relative under'>link
@@ -178,7 +150,8 @@ const [controlsEnabled, setControlsEnabled] = useState(false);
         <div  id='section_2' className='section-1 w-full h-screen bg-[#f0f0f0]' >
         </div>
 
-           
+        {/* <div  id='' className=' w-full h-screen bg-[#f0f0f0]' >
+        </div> */}
       </div>
       </motion.div>
   );
