@@ -21,14 +21,14 @@ export default function DragImage() {
         setOrigX(0);
         setOrigY(5);
         setScaleFactor(0.8);
-      } else if (window.innerWidth < 1024) {
+      } else if (window.innerWidth < 1220) {
         // For tablet screens
         setOrigX(260);
         setOrigY(70);
         setScaleFactor(1);
       } else {
         // For desktop screens
-        setOrigX(-550);
+        setOrigX(-490);
         setOrigY(-60);
         setScaleFactor(1);
       }
