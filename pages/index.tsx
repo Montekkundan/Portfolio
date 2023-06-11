@@ -23,6 +23,7 @@ const Home = () => {
       onEnter: () => {
         gsap.to('#section_2', { backgroundColor: '#333',  });
         gsap.to('#section_1', { backgroundColor: '#333', color: 'white' });
+        gsap.to('#section_3', { backgroundColor: '#333', color: 'white' });
         gsap.to('#cursor', { backgroundColor: '#f0f0f0'  });
         gsap.to('body', { backgroundColor: '#333'  });
       },
@@ -30,26 +31,12 @@ const Home = () => {
         gsap.to('body', { backgroundColor: '#f0f0f0'  });
         gsap.to('#section_2', { backgroundColor: '#f0f0f0' });
         gsap.to('#section_1', { backgroundColor: '#f0f0f0', color: '#333' });
+        gsap.to('#section_3', { backgroundColor: '#f0f0f0' });
         gsap.to('#cursor', { backgroundColor: '#333' });
 
       },
     });
-    ScrollTrigger.create({
-      trigger: '#section_3',
-      start: 'top bottom',
-      onEnter: () => {
-        gsap.to('body', { backgroundColor: '#14CF93'  });
-        gsap.to('#section_3', { backgroundColor: '#14CF93' });
-        gsap.to('#section_2', { backgroundColor: '#14CF93' });
-        gsap.to('#section_1', { backgroundColor: '#14CF93' });
-      },
-      onLeaveBack: () => {
-        gsap.to('body', { backgroundColor: '#333'  });
-        gsap.to('#section_3', { backgroundColor: '#333' });
-        gsap.to('#section_2', { backgroundColor: '#333' });
-        gsap.to('#section_1', { backgroundColor: '#333' });
-      },
-    });
+
     const tl = gsap.timeline({ delay: 1 });
     tl.to('.animate-up', { y: '-=50', opacity: 0, ease: 'Circ.easeInOut', duration: 1 })
     .to('.loader', { height: 0, ease: 'Circ.easeInOut', duration: 1 }, )
@@ -159,7 +146,7 @@ const Home = () => {
         <div  id='section_2' className='bg-[#333] w-full h-screen ' >
         </div>
 
-        <div  id='section_3' className='bg-[#14CF93] w-full h-screen ' >
+        <div  id='section_3' className='bg-[#333] w-full h-screen ' >
         </div>
       </div>
       </motion.div>
