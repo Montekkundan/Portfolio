@@ -10,6 +10,7 @@ import Overlay from "../Experience/layout/Overlay.jsx";
 import useFlock from "../Experience/stores/useFlock.js";
 import WindowFocusHandler from "../Experience/layout/WindowFocusHandler.jsx";
 import Flock from "../Experience/Flock.jsx";
+import CardStack from '../components/CardStack';
 
 
 const pageMetadata = metadata['home'];
@@ -23,18 +24,16 @@ const Home = () => {
       trigger: '#section_2',
       start: 'top bottom',
       onEnter: () => {
-        gsap.to('#section_2', { backgroundColor: '#333',  });
-        gsap.to('#section_1', { backgroundColor: '#333', color: 'white' });
-        gsap.to('#section_3', { backgroundColor: '#333', color: 'white' });
-        gsap.to('#cursor', { backgroundColor: '#f0f0f0'  });
-        gsap.to('body', { backgroundColor: '#333'  });
+        gsap.to('#section_2', { backgroundColor: '#333', delay: 0.5  });
+        gsap.to('#section_1', { backgroundColor: '#333', color: 'white' , delay: 0.5  });
+        gsap.to('#section_3', { backgroundColor: '#333', color: 'white' , delay: 0.5  });
+        gsap.to('#cursor', { backgroundColor: '#f0f0f0' , delay: 0.5   });
       },
       onLeaveBack: () => {
-        gsap.to('body', { backgroundColor: '#f0f0f0'  });
-        gsap.to('#section_2', { backgroundColor: '#f0f0f0' });
-        gsap.to('#section_1', { backgroundColor: '#f0f0f0', color: '#333' });
-        gsap.to('#section_3', { backgroundColor: '#f0f0f0' });
-        gsap.to('#cursor', { backgroundColor: '#333' });
+        gsap.to('#section_2', { backgroundColor: '#f0f0f0' , delay: 0.5  });
+        gsap.to('#section_1', { backgroundColor: '#f0f0f0', color: '#333' , delay: 0.5  });
+        gsap.to('#section_3', { backgroundColor: '#f0f0f0' , delay: 0.5  });
+        gsap.to('#cursor', { backgroundColor: '#333' , delay: 0.5 });
 
       },
     });
@@ -75,7 +74,7 @@ const Home = () => {
 
       </Head>
  
-      <div className='w-full'>
+      <div className='w-full '>
         <div className='loader  w-full h-screen bg-[#111] text-white '>
           <div className='absolute top-[5%] left-1/2 -translate-x-2/4 translate-y-0 '>
             <h5 className='uppercase text-xs font-light text-center animate-up'>Personal Portfolio</h5>
@@ -84,7 +83,7 @@ const Home = () => {
           <h1 className='animate-left animate-up absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-3xl md:text-[4vw] font-medium'>Monte<span  className='font-slack '>k</span> is a</h1>
         </div>
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
-        <div  className='w-full h-screen bg-[#f0f0f0] text-[#333] '>
+        <div id='section'  className='w-full h-screen bg-[#f0f0f0] text-[#333] '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
             <Link href="/" className='uppercase font-light text-xs  relative under'>Montek 
               <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
@@ -145,10 +144,13 @@ const Home = () => {
         </div>
         
         </div>
-        <div  id='section_1' className='bg-[#f0f0f0] w-full h-screen ' >
+        <div  id='section_1' className='bg-[#f0f0f0] w-full h-full pb-32 ' >
+            <h1 className='text-7xl md:text-[13vw] font-semibold  text-center font-abril'>Straight Flush of Skills</h1>
+          <CardStack/>
+            <h1 className='text-6xl md:text-[11vw] font-semibold  text-center font-abril'>Jack of All Codes, Mastering Them All</h1>
         </div>
-        <div  id='section_2' className='bg-[#333] w-full h-screen ' >
-        </div>
+        {/* <div  id='section_2' className='bg-[#333] w-full h-screen ' >
+        </div> */}
 
         <div  id='section_3' className='bg-[#333] w-full h-screen ' >
         <Suspense fallback={null}>

@@ -17,6 +17,9 @@
     }
 
 }
+body {
+    overflow-x: hidden;
+  }
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Kaushan+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
@@ -65,3 +68,4 @@
       opacity: 0;
     }
   }
+
