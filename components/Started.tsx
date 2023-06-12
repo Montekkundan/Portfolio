@@ -6,7 +6,7 @@ import original from 'react95/dist/themes/original'
 // @ts-ignore
 
 
-import { Title } from './title'
+import { Title } from './Title'
 import { Window } from './Window'
 
 const GlobalStyles: any = createGlobalStyle`
