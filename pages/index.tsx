@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import metadata from '../metadata.json';
@@ -11,32 +11,47 @@ import useFlock from "../Experience/stores/useFlock.js";
 import WindowFocusHandler from "../Experience/layout/WindowFocusHandler.jsx";
 import Flock from "../Experience/Flock.jsx";
 import CardStack from '../components/CardStack';
+import { useTheme } from "next-themes";
 
 
 const pageMetadata = metadata['home'];
 gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
+
+  const divRef = useRef<HTMLDivElement | null>(null);
+  const [isDivInView, setIsDivInView] = useState(false);
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3, // Set the threshold to 30%
+    };
+
+    const callback: IntersectionObserverCallback = (entries) => {
+      const entry = entries[0];
+      setIsDivInView(entry.isIntersecting);
+      setTheme(entry.isIntersecting ? 'dark' : 'light');
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+    if (divRef.current) {
+      observer.observe(divRef.current);
+    }
+
+    return () => {
+      if (divRef.current) {
+        observer.unobserve(divRef.current);
+      }
+    };
+  }, []);
   const flockCount = useFlock((state: { count: any; }) => state.count);
   useEffect(() => {
     
     window.scrollTo(0, 0);
-    ScrollTrigger.create({
-      trigger: '#section_2',
-      start: 'top bottom',
-      onEnter: () => {
-        gsap.to('#section_2', { backgroundColor: '#333', delay: 0.5  });
-        gsap.to('#section_1', { backgroundColor: '#333', color: 'white' , delay: 0.5  });
-        gsap.to('#section_3', { backgroundColor: '#333', color: 'white' , delay: 0.5  });
-        gsap.to('#cursor', { backgroundColor: '#333' , delay: 0.5   });
-      },
-      onLeaveBack: () => {
-        gsap.to('#section_2', { backgroundColor: '#f0f0f0' , delay: 0.5  });
-        gsap.to('#section_1', { backgroundColor: '#f0f0f0', color: '#333' , delay: 0.5  });
-        gsap.to('#section_3', { backgroundColor: '#f0f0f0' , delay: 0.5  });
-        gsap.to('#cursor', { backgroundColor: '#f0f0f0' , delay: 0.5 });
 
-      },
-    });
 
     const tl = gsap.timeline({ delay: 1 });
     tl.to('.animate-up', { y: '-=50', opacity: 0, ease: 'Circ.easeInOut', duration: 1 })
@@ -50,13 +65,18 @@ const Home = () => {
     .to('.visual', { opacity: 1, ease: 'Circ.easeInOut', duration: 1 }) 
     .to('.drag-image', { scale: 1, opacity: 1, ease: 'Circ.easeInOut', duration: 1 }, '-=1')
     .to('.icons', { opacity: 1, stagger: .3, ease: 'Circ.easeInOut', duration: 1 }); 
-  // Disable mouse scroll for the first 1.5 seconds
-  const disableScroll = (event: WheelEvent) => {
-    event.preventDefault();
-  };
+
+    const disableScroll = (event: Event) => {
+      event.preventDefault();
+    };
   window.addEventListener('wheel', disableScroll, { passive: false });
+  window.addEventListener('touchmove', disableScroll, { passive: false }); // For mobile devices
+  document.body.style.overflowY = 'hidden';
   setTimeout(() => {
     window.removeEventListener('wheel', disableScroll);
+    window.removeEventListener('touchmove', disableScroll);
+    
+    document.body.style.overflowY = 'auto';
   }, 4000);
   }, []);
   return (
@@ -74,8 +94,10 @@ const Home = () => {
 
       </Head>
  
-      <div className='w-full '>
+      <div className='w-full  '>
+
         <div className='loader  w-full h-screen bg-[#111] text-white '>
+        {/* <AnimatedCursor/> */}
           <div className='absolute top-[5%] left-1/2 -translate-x-2/4 translate-y-0 '>
             <h5 className='uppercase text-xs font-light text-center animate-up'>Personal Portfolio</h5>
             <h5 className='uppercase text-xs font-light text-center animate-up'>&copy; {new Date().getFullYear()}</h5>
@@ -83,7 +105,7 @@ const Home = () => {
           <h1 className='animate-left animate-up absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-3xl md:text-[4vw] font-medium'>Monte<span  className='font-slack '>k</span> is a</h1>
         </div>
         <div className='green overflow-hidden w-full h-[0vh] bg-[#14CF93] absolute top-full'></div>
-        <div id='section'  className='w-full h-screen bg-[#f0f0f0] text-[#333] '>
+        <div id='section'  className='w-full h-screen dark:bg-[#333] bg-[#f0f0f0] text-[#333] dark:text-yellow-200 '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
             <Link href="/" className='uppercase font-light text-xs  relative under'>Montek 
               <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
@@ -106,6 +128,7 @@ const Home = () => {
             <h5 className='opacity-60 font-medium text-xs'>Currently available for </h5>
             <h5 className='opacity-60 font-medium text-xs'>freelance</h5>
           </div>
+          
           <div className='mt-[5vw]'>
             <h5 className='opacity-60 font-medium text-xs'>My local time is</h5>
             <h5 className='opacity-60 font-medium text-xs'>--</h5>
@@ -144,15 +167,17 @@ const Home = () => {
         </div>
         
         </div>
-        <div  id='section_1' className='bg-[#f0f0f0] w-full h-full pb-32 ' >
-            <h1 className='text-7xl md:text-[13vw] font-semibold  text-center font-abril'>Straight Flush of Skills</h1>
+        <div ref={divRef}  id='section_1' className='dark:bg-[#333] bg-[#f0f0f0] w-full h-full pb-32 pt-32' >
+            <h1 className='transition-colors duration-300 text-7xl md:text-[13vw] font-semibold   text-[#333]  dark:text-yellow-200 text-center font-abril'>Straight Flush of Skills</h1>
           <CardStack/>
-            <h1 className='text-6xl md:text-[11vw] font-semibold  text-center font-abril'>Jack of All Codes, Mastering Them All</h1>
+            <h1 className='text-6xl md:text-[11vw] font-semibold  text-center font-abril text-[#333]  dark:text-yellow-200'>Jack of All Codes, Mastering Them All</h1>
         </div>
-        {/* <div  id='section_2' className='bg-[#333] w-full h-screen ' >
-        </div> */}
+        <div  id='section_2' className='bg-[#333] w-full h-screen ' >
+            
+        </div>
 
         <div  id='section_3' className='bg-[#333] w-full h-screen ' >
+          <h1></h1>
         <Suspense fallback={null}>
         <Overlay />
         <Flock count={flockCount} />
