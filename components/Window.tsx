@@ -24,7 +24,6 @@ export const Window: React.FC<WindowProps> = ({ soundSource }) => {
     }, 100); // delay of 100ms
   }, [isLargerWindow]);
   useEffect(() => {
-    console.log(hasPlayed)
     if (inView && audioRef.current && !hasPlayed) { 
       audioRef.current.play();
       setHasPlayed(true); 
