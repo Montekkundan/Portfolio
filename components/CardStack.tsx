@@ -6,9 +6,10 @@ import styles from './styles.module.css'
 
 const cards = [
   'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/poker-playing-card-jack-spade-miroslav-nemecek.jpg',
-  './images/me.JPG',
-  './images/me.JPG',
-  './images/me.JPG',
+  'https://th.bing.com/th/id/R.2395ce87da3f91b4cdb179ec21ce7768?rik=9742j907NCeMAw&pid=ImgRaw&r=0',
+  'https://th.bing.com/th/id/OIP.3fBgLLYPoFMtYv6604-w7QHaJ4?pid=ImgDet&rs=1',
+  'https://th.bing.com/th/id/R.180c4308a3ba4a8f607579b7187d26e8?rik=%2fvR4gBfR0zJdxA&pid=ImgRaw&r=0',
+
  
 ]
 
