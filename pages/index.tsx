@@ -12,18 +12,25 @@ import WindowFocusHandler from "../Experience/layout/WindowFocusHandler.jsx";
 import Flock from "../Experience/Flock.jsx";
 import CardStack from '../components/CardStack';
 import { useTheme } from "next-themes";
-
+import { AttentionSeeker, Fade } from "react-awesome-reveal";
+import Started from '../components/Started';
+import { Howl } from 'howler';
 
 const pageMetadata = metadata['home'];
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const startupSound = useRef<Howl | null>(null);
+
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
   const divRef = useRef<HTMLDivElement | null>(null);
   const [isDivInView, setIsDivInView] = useState(false);
   useEffect(() => {
+    startupSound.current = new Howl({
+      src: ['./sounds/startup.wav'],
+    });
     const options = {
       root: null,
       rootMargin: '0px',
@@ -51,6 +58,7 @@ const Home = () => {
   useEffect(() => {
     
     window.scrollTo(0, 0);
+    // startupSound.current?.play();
 
 
     const tl = gsap.timeline({ delay: 1 });
@@ -94,7 +102,7 @@ const Home = () => {
 
       </Head>
  
-      <div className='w-full  '>
+      <div className='w-full transition-all duration-500  '>
 
         <div className='loader  w-full h-screen bg-[#111] text-white '>
         {/* <AnimatedCursor/> */}
@@ -167,13 +175,14 @@ const Home = () => {
         </div>
         
         </div>
-        <div ref={divRef}  id='section_1' className='dark:bg-[#333] bg-[#f0f0f0] w-full h-full pb-32 pt-32' >
-            <h1 className='transition-colors duration-300 text-7xl md:text-[13vw] font-semibold   text-[#333]  dark:text-yellow-200 text-center font-abril'>Straight Flush of Skills</h1>
+        <div ref={divRef}  id='section_1' className='dark:bg-[#333]  bg-[#f0f0f0] w-full h-full pb-32 pt-32' >
+        <h1 className='text-5xl mx-10 md:text-[11vw] font-semibold   text-[#333]  dark:text-yellow-200 text-center font-abril'>Straight Flush of Skills</h1>
           <CardStack/>
-            <h1 className='text-6xl md:text-[11vw] font-semibold  text-center font-abril text-[#333]  dark:text-yellow-200'>Jack of All Codes, Mastering Them All</h1>
+          <h1 className='text-5xl  mx-20 md:text-[11vw] font-semibold  text-center font-abril text-[#333]  dark:text-yellow-200'>Jack of All Codes, Mastering Them All</h1>
         </div>
-        <div  id='section_2' className='bg-[#333] w-full h-screen ' >
-            
+        
+        <div  id='section_2' className='pb-32 dark:bg-[#333]  bg-[#f0f0f0] ' >
+        <Started/>
         </div>
 
         <div  id='section_3' className='bg-[#333] w-full h-screen ' >
