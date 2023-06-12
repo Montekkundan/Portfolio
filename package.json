@@ -13,6 +13,7 @@
     "@react-three/drei": "^9.61.3",
     "@react-three/fiber": "^8.12.0",
     "@react-three/postprocessing": "^2.14.9",
+    "@react95/core": "^6.0.7",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@use-gesture/react": "^10.2.27",
     "@vercel/analytics": "^1.0.1",
