@@ -116,10 +116,10 @@ const Home = () => {
         <div id='section'  className='w-full h-screen dark:bg-[#333] bg-[#f0f0f0] text-[#333] dark:text-yellow-200 '>
           <div className='navbar w-full h-[100px] flex items-center justify-between px-[5vw] py-0'>
             <Link href="/" className='uppercase font-light text-xs  relative under'>Montek 
-              <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
+              <span className=' w-full h-[1px]  bg-[#333]  inline-block absolute right-0 bottom-0 line'></span>
             </Link>
             <a target="_blank" href="https://blog.montek.dev/" className='uppercase font-light text-xs relative under'>Devlog
-            <span className=' w-full h-[1px]  inline-block absolute right-0 bottom-0 line'></span>
+            <span className=' w-full h-[1px] bg-[#333]  inline-block absolute right-0 bottom-0 line'></span>
             </a>
             {/* <a href="#" className='uppercase font-light text-xs text-black relative under'>link
             <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
@@ -128,7 +128,7 @@ const Home = () => {
             <span className=' w-full h-[1px] bg-black inline-block absolute right-0 bottom-0 line'></span>
             </a> */}
           </div>
-          <div className='mt-32  flex flex-col '>
+          <div className='md:mt-58 lg: mt-32  flex flex-col '>
           <div className='navbar w-full flex flex-col md:flex-row justify-between  py-0 px-[6vw] pr-[12vw]'>
           <h1 className='text-7xl md:text-[13vw] font-semibold creative text-center font-abril'>Creative</h1>
           <div className='hidden  md:flex md:space-x-20 md:ml-5'>
