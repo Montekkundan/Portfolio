@@ -32,7 +32,7 @@ export const Window: React.FC<WindowProps> = ({ soundSource }) => {
 
   return (
     <>
-      <audio ref={audioRef} src={soundSource} preload="auto" />
+      {/* <audio ref={audioRef} src={soundSource} preload="auto" /> */}
       <AnimatedWindow style={{ transform: `scale(${scale})` }} ref={ref} className="window">
         <WindowHeader active={false} className="window-title">
           <span>hello.py</span>

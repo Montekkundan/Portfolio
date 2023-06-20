@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import metadata from '../metadata.json';
 import Link from 'next/link';
 import DragImage from '../components/draggerImage';
+import {HoverPage} from '../components/hoverPages';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Overlay from "../Experience/layout/Overlay.jsx";
@@ -175,18 +176,19 @@ const Home = () => {
         </div>
         
         </div>
+       
         <div ref={divRef}  id='section_1' className='dark:bg-[#333]  bg-[#f0f0f0] w-full h-full pb-32 pt-32' >
         <h1 className='text-5xl mx-10 md:text-[11vw] font-semibold   text-[#333]  dark:text-yellow-200 text-center font-abril'>Straight Flush of Skills</h1>
           <CardStack/>
           <h1 className='text-5xl  mx-20 md:text-[11vw] font-semibold  text-center font-abril text-[#333]  dark:text-yellow-200'>Jack of All Codes, Mastering Them All</h1>
         </div>
         
-        <div  id='section_2' className='pb-32 dark:bg-[#333]  bg-[#f0f0f0] ' >
+        <div   className='pb-32 dark:bg-[#333]  bg-[#f0f0f0] ' >
         <Started/>
         </div>
 
-        <div  id='section_3' className='bg-[#333] w-full h-screen ' >
-          <h1></h1>
+        <div   className='bg-[#333] w-full h-screen ' >
+          
         <Suspense fallback={null}>
         <Overlay />
         <Flock count={flockCount} />
@@ -196,6 +198,10 @@ const Home = () => {
       <WindowFocusHandler />
         </div>
       </div>
+      <div   className='pb-32 w-full h-screen dark:bg-[#333]  bg-[#2e8f16] ' >
+        <div className='h-screen'><HoverPage /></div>
+        
+        </div>
       </motion.div>
   );
 };
