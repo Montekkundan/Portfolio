@@ -16,11 +16,14 @@ import { useTheme } from "next-themes";
 import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import Started from '../components/Started';
 import { Howl } from 'howler';
+import { useRoute, useLocation } from 'wouter'
 
 const pageMetadata = metadata['home'];
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  // const [, params] = useRoute('/item/:id')
+  // const [, setLocation] = useLocation()
   const startupSound = useRef<Howl | null>(null);
 
   const { systemTheme, theme, setTheme } = useTheme();
@@ -200,6 +203,9 @@ const Home = () => {
       </div>
       <div   className='pb-32 w-full h-screen dark:bg-[#333]  bg-[#2e8f16] ' >
         <div className='h-screen'><HoverPage /></div>
+        {/* <a style={{  top: 40, left: 40, fontSize: '13px' }} href="#" onClick={() => setLocation('/')}>
+          {params ? '< back' : 'double click to enter portal'}
+        </a> */}
         
         </div>
       </motion.div>
