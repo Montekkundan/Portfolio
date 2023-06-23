@@ -43,7 +43,7 @@ function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, childr
         {author}
       </Text>
       <mesh name={id} onDoubleClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
-        <planeGeometry args={[width, height, 0.1]} />
+        <planeGeometry args={[width, height]} />
         {/* <MeshPortalMaterial ref={portal} events={params?.id === id} side={THREE.DoubleSide}>
           <color attach="background" args={[bg]} />
           {children}
@@ -56,6 +56,7 @@ function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, childr
 function Rig({ position = new THREE.Vector3(0, 0, 2), focus = new THREE.Vector3(0, 0, 0) }) {
   const { controls, scene } = useThree()
   const [, params] = useRoute('/item/:id')
+
   useEffect(() => {
     const active = scene.getObjectByName(params?.id)
     if (active) {
@@ -63,7 +64,11 @@ function Rig({ position = new THREE.Vector3(0, 0, 2), focus = new THREE.Vector3(
       active.parent.localToWorld(focus.set(0, 0, -2))
     }
     controls?.setLookAt(...position.toArray(), ...focus.toArray(), true)
-  })
-  return <CameraControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
+    if (controls && 'enableZoom' in controls) {
+      controls.enableZoom = false; // disable zooming
+    }
+  }, [controls, scene, params, position, focus])
+
+  return <CameraControls makeDefault minPolarAngle={0} maxPolarAngle={70 * Math.PI / 180} />
 }
 
